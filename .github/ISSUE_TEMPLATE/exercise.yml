@@ -1,0 +1,25 @@
+name: Workshop Exercise Submission
+description: "Please ensure you have completed the exercise and submitted before the next workshop."
+title: "Exercise: <insert title here>"
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a short description for your solution
+    validations:
+      required: false
+  - type: input
+    id: repo_url
+    attributes:
+      label: GitHub Repo URL
+      description: Provide a link to the GitHub repo containing your implementation. If private, ensure you grant repo access to the instructor (pibzion)
+    validations:
+      required: true
+  - type: textarea
+    id: other
+    attributes:
+      label: Other (optional)
+      description: Provide any other relevant information (optional) regarding your solution.
+    validations:
+      required: false
