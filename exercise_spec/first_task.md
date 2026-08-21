@@ -96,16 +96,15 @@ usage snapshot.
 
 Submit your completed first-win task by [opening a GitHub issue](https://github.com/A3copilotprogram/starter-expense-tracker/issues/new?template=exercise.yml) in this repository.
 
-Before submitting, make sure you have completed the definition of Done above:
+Before submitting, **make sure you have completed the definition of Done above**:
 the command works, the tests pass, you have read the diff, and you can explain
 your changes.
 
 1. Push your completed implementation to your GitHub repository.
-2. Open the repository on GitHub and create a new issue.
-3. Choose the **Workshop Exercise Submission** template.
-4. Use the issue title format `Exercise: First Win - Variant X`, replacing `X`
+2. Create a new issue in this repo using the **Workshop Exercise Submission** template.
+3. Use the issue title format `Exercise: First Win - Variant X`, replacing `X`
    with `A`, `B`, or `C`.
-5. Fill in the issue fields:
+4. Fill in the issue fields:
    - **Description:** briefly state which variant you completed and summarize
      the command you added.
    - **GitHub Repo URL:** paste the link to the repo containing your
@@ -114,4 +113,4 @@ your changes.
    - **Other (optional):** include anything useful for review, such as the test
      command you ran, notes about your agent/model comparison, or anything you
      want the reviewer to know.
-6. Submit the issue.
+5. Submit the issue.
