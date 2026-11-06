@@ -17,6 +17,15 @@ def add_parser(subparsers) -> None:
     )
 
 
+def format_expense(expense) -> str:
+    note = f"  ({expense.note})" if expense.note else ""
+    return (
+        f"#{expense.id}  {expense.date}  "
+        f"{format_amount(expense.amount_cents):>10}  "
+        f"{expense.category}{note}"
+    )
+
+
 def handle(args, store) -> int:
     expenses = store.load()
     if args.category is not None:
@@ -26,7 +35,6 @@ def handle(args, store) -> int:
         print("No expenses found.")
         return 0
 
-    for e in expenses:
-        note = f"  ({e.note})" if e.note else ""
-        print(f"#{e.id}  {e.date}  {format_amount(e.amount_cents):>10}  {e.category}{note}")
+    for expense in expenses:
+        print(format_expense(expense))
     return 0

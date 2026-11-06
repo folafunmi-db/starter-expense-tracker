@@ -1,3 +1,5 @@
+from datetime import date as real_date
+
 from expense_tracker.commands import add
 from tests.conftest import args, make_store
 
@@ -42,3 +44,21 @@ def test_add_rejects_bad_date(tmp_path):
     )
     assert code == 1
     assert store.load() == []
+
+
+def test_add_defaults_date_to_today(tmp_path, monkeypatch):
+    class FixedDate:
+        @staticmethod
+        def today():
+            return real_date(2026, 3, 9)
+
+    monkeypatch.setattr(add, "date_cls", FixedDate)
+    store = make_store(tmp_path)
+    code = add.handle(
+        args(amount="7.25", category="lunch", date=None, note=""),
+        store,
+    )
+    assert code == 0
+    saved = store.load()
+    assert len(saved) == 1
+    assert saved[0].date == "2026-03-09"

@@ -15,7 +15,12 @@ def add_parser(subparsers) -> None:
     parser = subparsers.add_parser(NAME, help=HELP)
     parser.add_argument("amount", help="Amount, e.g. 12.50")
     parser.add_argument("category", help="Category, e.g. groceries")
-    parser.add_argument("date", help="Date in YYYY-MM-DD format")
+    parser.add_argument(
+        "date",
+        nargs="?",
+        default=None,
+        help="Date in YYYY-MM-DD format (defaults to today)",
+    )
     parser.add_argument("--note", default="", help="Optional free-text note")
 
 
@@ -28,7 +33,10 @@ def _validate_date(value: str) -> str:
 def handle(args, store) -> int:
     try:
         amount_cents = parse_amount(args.amount)
-        iso_date = _validate_date(args.date)
+        if args.date is None:
+            iso_date = date_cls.today().isoformat()
+        else:
+            iso_date = _validate_date(args.date)
     except (MoneyError, ValueError) as exc:
         print(f"error: {exc}")
         return 1
